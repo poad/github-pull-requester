@@ -1,0 +1,30 @@
+name: 'Create GitHub Pull Reaquest Action'
+description: 'Creates a Pull Request for GitHub.'
+author: 'Kenji Saito <ken-yo@mbr.nifty.com>'
+branding:
+  icon: 'terminal'
+  color: 'yellow'
+inputs:
+  head-branch:
+    description: (head) branch name
+    required: true
+  base-branch:
+    description: target(base) branch name to merge
+    default: main
+  title:
+    description: title for pull request
+    default: create by GitHub Action
+  body:
+    description: body text for pull request
+    default: ''
+  github-token:
+    required: true
+  owner:
+    description: owner
+    required: true
+  repository:
+    description: target repository
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/main.js'
