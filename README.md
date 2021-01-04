@@ -1,1 +1,1 @@
-# github-pull-request-generate-action
+# github-pull-requester
