@@ -1,19 +1,17 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const core = require("@actions/core");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const client = require("./githubClient");
+import * as core from '@actions/core'
+import GitHubClient from './gitHubClient';
 
 function run(): void {
   try {
-    const token: string = core.getInput("github-token");
-    const head: string = core.getInput("head-branch");
-    const base: string = core.getInput("base-branch");
-    const title: string = core.getInput("title");
-    const body: string = core.getInput("body");
-    const owner: string = core.getInput("owner");
-    const repository: string = core.getInput("repository");
+    const token: string = core.getInput('github_token');
+    const head: string = core.getInput('head_branch');
+    const base: string = core.getInput('base_branch');
+    const title: string = core.getInput('title');
+    const body: string = core.getInput('body');
+    const owner: string = core.getInput('owner');
+    const repository: string = core.getInput('repository');
 
-    const gh = client.GitHubClient(token);
+    const gh = new GitHubClient(token);
 
     gh.createPullRequest(
       {
@@ -25,10 +23,10 @@ function run(): void {
         base: base
       }
     )
-    .then((prNum: number) => core.setOutput("dest-number", prNum))
-    .catch((error: Error) => core.setFailed(error.message));
+      .then((prNum: number) => core.setOutput('dest_number', prNum))
+      .catch((error: Error) => core.setFailed(error.message));
   } catch (error) {
-    core.console.error(error);
+    core.error(error.message);
     core.setFailed(error.message);
   }
 }

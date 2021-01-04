@@ -1,11 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { Octokit } = require("@octokit/rest");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const rest_1 = require("@octokit/rest");
 class GitHubClient {
     constructor(token) {
         this.token = token;
     }
     async createPullRequest(option) {
-        const octokit = new Octokit({
+        const octokit = new rest_1.Octokit({
             auth: this.token
         });
         return await octokit.pulls.create({
@@ -22,4 +23,4 @@ class GitHubClient {
         });
     }
 }
-export default GitHubClient;
+exports.default = GitHubClient;

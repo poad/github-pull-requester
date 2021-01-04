@@ -8,9 +8,9 @@ Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.j
 - name: Create a new Pull Request
   uses: poad/github-pull-requester@v1
   with:
-      head-branch: { name of head branch }
-      base-branch: master # If omitted, it is equivalent to specifying main.
-      github-token: { GitHub token for Pull Request creation }
+      head_branch: { name of head branch }
+      base_branch: master # If omitted, it is equivalent to specifying main.
+      github_token: { GitHub token for Pull Request creation }
       owner: { name of repository owner }
       repository: { name of repository }
       title: { title (optional) }
