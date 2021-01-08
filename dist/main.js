@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -25,6 +25,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const gitHubClient_1 = __importDefault(require("./gitHubClient"));
 function run() {
+    const errHandler = (error) => {
+        core.error(error.message);
+        core.setFailed(error.message);
+    };
     try {
         const token = core.getInput('github_token');
         const head = core.getInput('head_branch');
@@ -33,21 +37,26 @@ function run() {
         const body = core.getInput('body');
         const owner = core.getInput('owner');
         const repository = core.getInput('repository');
+        const repo = repository.startsWith(`${owner}/`) ? repository.replace(`${owner}/`, '') : repository;
+        core.info(`owner: ${owner}`);
+        core.info(`repo: ${repo}`);
+        core.info(`HEAD: ${head}`);
+        core.info(`BASE: ${base}`);
+        const req = {
+            owner,
+            repo,
+            title,
+            body,
+            head,
+            base
+        };
         const gh = new gitHubClient_1.default(token);
-        gh.createPullRequest({
-            owner: owner,
-            repo: repository,
-            title: title,
-            body: body,
-            head: head,
-            base: base
-        })
+        gh.createPullRequest(req)
             .then((prNum) => core.setOutput('dest_number', prNum))
-            .catch((error) => core.setFailed(error.message));
+            .catch(errHandler);
     }
     catch (error) {
-        core.error(error.message);
-        core.setFailed(error.message);
+        errHandler(error);
     }
 }
 run();

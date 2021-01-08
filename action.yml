@@ -13,7 +13,7 @@ inputs:
     default: main
   title:
     description: title for pull request
-    default: create by GitHub Action
+    default: Created by GitHub Action
   body:
     description: body text for pull request
     default: ''

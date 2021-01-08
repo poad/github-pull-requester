@@ -22,7 +22,7 @@ jobs:
         node-version: [12.x, 14.x]
         # node-version: [12.x, 14.x, 15.x]
     
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -40,7 +40,7 @@ jobs:
           yarn test
 
   lint:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -55,3 +55,24 @@ jobs:
         run: |
           yarn install
           yarn lint
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: debug
+        run: ls
+      - name: Create pull request
+        uses: ./
+        with:
+          head_branch: test
+          github_token: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
+          repository: github-pull-requester
+          owner: poad

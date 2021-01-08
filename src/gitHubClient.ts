@@ -28,17 +28,25 @@ class GitHubClient {
       auth: this.token
     });
 
-    return await octokit.pulls.create({
+    const req = {
       owner: option.owner,
       repo: option.repo,
       head: option.head,
-      base: option.base,
-      title: option.title,
-      body: option.body,
-    })
+      base: option.base
+    }
+
+    if (option.title !== undefined) {
+      Object.assign(req, { title: option.title });
+    }
+
+    if (option.base !== undefined) {
+      Object.assign(req, { base: option.base });
+    }
+
+    return await octokit.pulls.create(req)
       .then((pr: PullRequestResponse) => pr.data.number)
-      .catch(() => {
-        throw this
+      .catch((error: Error) => {
+        throw error
       });
   }
 }
