@@ -38,7 +38,7 @@ bower_components
 build/Release
 
 # Dependency directories
-#node_modules/
+node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -102,3 +102,12 @@ typings/
 
 # TernJS port file
 .tern-port
+
+!node_modules/@actions/core
+!node_modules/@octokit
+!node_modules/before-after-hook
+!node_modules/deprecation
+!node_modules/node-fetch
+!node_modules/once
+!node_modules/universal-user-agent
+!node_modules/wrappy
