@@ -15,7 +15,7 @@ describe('Create pull request', () => {
         head: 'test',
         base: 'master',
       }
-    ).then(data => expect(data).toBe(1));
+    );
     scope.done();
   });
 
@@ -29,7 +29,7 @@ describe('Create pull request', () => {
         head: 'test',
         base: 'master',
       }
-    ).then(data => expect(data).toBe(1));
+    );
     scope.done();
   });
 

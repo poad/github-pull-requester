@@ -37,14 +37,13 @@ function run() {
         const body = core.getInput('body');
         const owner = core.getInput('owner');
         const repository = core.getInput('repository');
-        const repo = repository.startsWith(`${owner}/`) ? repository.replace(`${owner}/`, '') : repository;
         core.info(`owner: ${owner}`);
-        core.info(`repo: ${repo}`);
+        core.info(`repo: ${repository}`);
         core.info(`HEAD: ${head}`);
         core.info(`BASE: ${base}`);
         const req = {
             owner,
-            repo,
+            repo: repository,
             title,
             body,
             head,
@@ -52,7 +51,9 @@ function run() {
         };
         const gh = new gitHubClient_1.default(token);
         gh.createPullRequest(req)
-            .then((prNum) => core.setOutput('dest_number', prNum))
+            .then((result) => {
+            core.setOutput('result', result);
+        })
             .catch(errHandler);
     }
     catch (error) {
