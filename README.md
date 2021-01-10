@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 ![CI](https://github.com/poad/github-pull-requester/workflows/CI/badge.svg)
+[![GitHub release](https://img.shields.io/github/release/poad/github-pull-requester.svg)](https://GitHub.com/poad/github-pull-requester/releases/)
 
 Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.js/).
 
