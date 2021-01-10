@@ -1,5 +1,8 @@
 # github-pull-requester
 
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
+![CI](https://github.com/poad/github-pull-requester/workflows/CI/badge.svg)
+
 Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.js/).
 
 ## Useage
@@ -25,3 +28,12 @@ Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.j
 - maintainer_can_modify
 - draft
 - issue
+
+## Outputs
+
+### key
+`result`
+
+### value
+
+[Response of create Pull Request API](https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#create-a-pull-request)
