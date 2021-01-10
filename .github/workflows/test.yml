@@ -67,8 +67,10 @@ jobs:
       - name: Create base branch
         run: |
           BASE_BRANCH_NAME="test-base-$(date "+%Y%m%d-%H%M%S")"
-          git checkout -b "${BASE_BRANCH_NAME}"
-          git commit --allow-empty -m "test"
+          git switch -c "${BASE_BRANCH_NAME}"
+          touch test.txt
+          git add test.txt
+          git commit -m "Test $(date)"
           echo "BASE_BRANCH_NAME=${BASE_BRANCH_NAME}" >> $GITHUB_ENV
 
       - name: Push Base
@@ -80,9 +82,9 @@ jobs:
       - name: Create head branch
         run: |
           BRANCH_NAME="test-$(date "+%Y%m%d-%H%M%S")"
-          git checkout -b "${BRANCH_NAME}"
-          touch test.txt
-          git add test.txt
+          git switch -c "${BRANCH_NAME}"
+          touch test1.txt
+          git add test1.txt
           git commit -m "Test $(date)"
           echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
 
@@ -104,10 +106,10 @@ jobs:
 
       - name: Close pull request for test
         env:
-          PULL_NUMBER: ${{ steps.create-pull-request.outputs.dest_number }}
+          RESULT: ${{ steps.create-pull-request.outputs.result }}
           GH_TOKEN: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
         run: |
-          URL="https://api.github.com/repos/poad/github-pull-requester/pulls/${PULL_NUMBER}"
+          URL=$(echo ${RESULT} | jq -r .data.url)
           echo ${URL}
 
           REQUEST_BODY='{ "state": "closed" }'
