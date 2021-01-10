@@ -104,10 +104,10 @@ jobs:
 
       - name: Close pull request for test
         env:
-          PULL_NUMBER: ${{ steps.create-pull-request.outputs.dest_number }}
+          RESULT: ${{ steps.create-pull-request.outputs.result }}
           GH_TOKEN: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
         run: |
-          URL="https://api.github.com/repos/poad/github-pull-requester/pulls/${PULL_NUMBER}"
+          URL=$(echo ${RESULT} | jq .data.url)
           echo ${URL}
 
           REQUEST_BODY='{ "state": "closed" }'

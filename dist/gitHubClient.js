@@ -22,7 +22,7 @@ class GitHubClient {
             Object.assign(req, { base: option.base });
         }
         return await octokit.pulls.create(req)
-            .then((pr) => pr.data.number)
+            .then((pr) => ({ ...pr }))
             .catch((error) => {
             throw error;
         });
