@@ -1,11 +1,5 @@
 import { Octokit } from "@octokit/rest";
 
-interface PullRequestResponse {
-  data: {
-    number: number;
-  };
-}
-
 export interface CreatePullRequestOption {
   owner: string,
   repo: string,
@@ -13,6 +7,10 @@ export interface CreatePullRequestOption {
   base: string,
   title?: string,
   body?: string,
+}
+
+export interface PullRequestResponse {
+  data: any;
 }
 
 class GitHubClient {
@@ -23,7 +21,7 @@ class GitHubClient {
 
   async createPullRequest(
     option: CreatePullRequestOption,
-  ): Promise<number> {
+  ): Promise<PullRequestResponse> {
     const octokit = new Octokit({
       auth: this.token
     });
@@ -44,7 +42,7 @@ class GitHubClient {
     }
 
     return await octokit.pulls.create(req)
-      .then((pr: PullRequestResponse) => pr.data.number)
+      .then((pr: PullRequestResponse) => ({...pr} as  PullRequestResponse))
       .catch((error: Error) => {
         throw error
       });

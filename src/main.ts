@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import GitHubClient from './gitHubClient';
+import GitHubClient, { PullRequestResponse } from './gitHubClient';
 
 function run(): void {
   const errHandler = (error: Error) => {
@@ -16,16 +16,14 @@ function run(): void {
     const owner: string = core.getInput('owner');
     const repository: string = core.getInput('repository');
 
-    const repo = repository.startsWith(`${owner}/`) ? repository.replace(`${owner}/`, '') : repository;
-    
     core.info(`owner: ${owner}`);
-    core.info(`repo: ${repo}`);
+    core.info(`repo: ${repository}`);
     core.info(`HEAD: ${head}`);
     core.info(`BASE: ${base}`);
 
     const req = {
       owner,
-      repo,
+      repo: repository,
       title,
       body,
       head,
@@ -35,7 +33,9 @@ function run(): void {
     const gh = new GitHubClient(token);
 
     gh.createPullRequest(req)
-      .then((prNum: number) => core.setOutput('dest_number', prNum))
+      .then((result: PullRequestResponse) => {
+        core.setOutput('result', result);
+      })
       .catch(errHandler);
   } catch (error) {
     errHandler(error);
