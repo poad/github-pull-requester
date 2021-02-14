@@ -10,7 +10,7 @@ export interface CreatePullRequestOption {
 }
 
 export interface PullRequestResponse {
-  data: any;
+  data: unknown;
 }
 
 class GitHubClient {
