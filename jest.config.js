@@ -2,7 +2,7 @@ module.exports = {
   preset: "ts-jest",
   clearMocks: true,
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
-  testMatch: ['**/tests/*.test.ts'],
+  testMatch: ['**/tests/**/*.test.ts'],
   testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.ts$': 'ts-jest'
