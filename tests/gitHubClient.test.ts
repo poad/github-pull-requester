@@ -15,7 +15,11 @@ describe('Create pull request', () => {
         head: 'test',
         base: 'master',
       }
-    );
+    )
+    .then(() => {})
+    .catch(error => {
+      
+    });
     scope.done();
   });
 
@@ -29,7 +33,11 @@ describe('Create pull request', () => {
         head: 'test',
         base: 'master',
       }
-    );
+    )
+    .then(() => {})
+    .catch(error => {
+
+    });
     scope.done();
   });
 
