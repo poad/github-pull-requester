@@ -103,8 +103,21 @@ typings/
 # TernJS port file
 .tern-port
 
+.DS_Store
+
 !node_modules/@actions/core
-!node_modules/@octokit
+!node_modules/@octokit/auth-token
+!node_modules/@octokit/core
+!node_modules/@octokit/endpoint
+!node_modules/@octokit/graphql
+!node_modules/@octokit/openapi-types
+!node_modules/@octokit/plugin-paginate-rest
+!node_modules/@octokit/plugin-request-log
+!node_modules/@octokit/plugin-rest-endpoint-methods
+!node_modules/@octokit/request
+!node_modules/@octokit/request-error
+!node_modules/@octokit/rest
+!node_modules/@octokit/types
 !node_modules/before-after-hook
 !node_modules/deprecation
 !node_modules/node-fetch
