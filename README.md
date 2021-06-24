@@ -8,9 +8,9 @@ Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.j
 
 ## Useage
 
-```
+```$yaml
 - name: Create a new Pull Request
-  uses: poad/github-pull-requester@v1
+  uses: poad/github-pull-requester@v1.0.0
   with:
       head_branch: { name of head branch }
       base_branch: master # If omitted, it is equivalent to specifying main.
@@ -21,10 +21,11 @@ Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.j
       body: { body (optional) }
 ```
 
-###　Reference Information
+### Reference Information
+
 [GitHub API](https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#create-a-pull-request)
 
-#### The following parameters are not supported.
+#### The following parameters are not supported
 
 - maintainer_can_modify
 - draft
@@ -33,6 +34,7 @@ Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.j
 ## Outputs
 
 ### key
+
 `result`
 
 ### value

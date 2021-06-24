@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const rest_1 = require("@octokit/rest");
 class GitHubClient {
+    token;
     constructor(token) {
         this.token = token;
     }
