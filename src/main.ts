@@ -38,7 +38,12 @@ function run(): void {
       })
       .catch(errHandler);
   } catch (error) {
-    errHandler(error);
+    if (error instanceof Error) {
+      errHandler(error);
+    } else {
+      core.error(JSON.stringify(error))
+      core.setFailed(JSON.stringify(error))
+    }
   }
 }
 
