@@ -6,7 +6,7 @@
   "author": "Kenji Saito <ken-yo@mbr.nifty.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.0.1",
     "@types/node": "^15.12.4",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
