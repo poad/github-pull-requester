@@ -112,6 +112,6 @@ typings/
 !node_modules/is-plain-object
 !node_modules/node-fetch
 !node_modules/once
+!node_modules/tunnel
 !node_modules/universal-user-agent
 !node_modules/wrappy
-!node_modules/.yarn-integrity
