@@ -2715,16 +2715,16 @@ jest-validate@^27.4.1:
     pretty-format "^27.4.1"
 
 jest-watcher@^27.3.1:
-  version "27.3.1"
-  resolved "https://registry.yarnpkg.com/jest-watcher/-/jest-watcher-27.3.1.tgz#ba5e0bc6aa843612b54ddb7f009d1cbff7e05f3e"
-  integrity sha512-9/xbV6chABsGHWh9yPaAGYVVKurWoP3ZMCv6h+O1v9/+pkOroigs6WzZ0e9gLP/njokUwM7yQhr01LKJVMkaZA==
+  version "27.4.1"
+  resolved "https://registry.yarnpkg.com/jest-watcher/-/jest-watcher-27.4.1.tgz#73ccd12c7de312814920c3fc4c11d51ef16d3360"
+  integrity sha512-tm7C/Mf69mL6pvRsXmH4GNaZbXZaJuO4Qz8/Gfl+oaO2o+vjipgR3o/cyDYfnZitkqwu43O6cCRPXRLIlpWqtw==
   dependencies:
-    "@jest/test-result" "^27.3.1"
-    "@jest/types" "^27.2.5"
+    "@jest/test-result" "^27.4.1"
+    "@jest/types" "^27.4.1"
     "@types/node" "*"
     ansi-escapes "^4.2.1"
     chalk "^4.0.0"
-    jest-util "^27.3.1"
+    jest-util "^27.4.1"
     string-length "^4.0.1"
 
 jest-worker@^27.3.1, jest-worker@^27.4.1:
