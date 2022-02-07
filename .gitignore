@@ -115,3 +115,4 @@ typings/
 !node_modules/tunnel
 !node_modules/universal-user-agent
 !node_modules/wrappy
+.DS_Store

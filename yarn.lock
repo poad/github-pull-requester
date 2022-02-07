@@ -17,12 +17,11 @@
     tunnel "0.0.6"
 
 "@ampproject/remapping@^2.0.0":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.0.3.tgz#899999b5b7a5ce570d6d9bafdcc1e62cea466cf3"
-  integrity sha512-DmIAguV77yFP0MGVFWknCMgSLAtsLR3VlRTteR6xgMpIfYtwaZuMvjGv5YlpiqN7S/5q87DHyuIx8oa15kiyag==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.1.0.tgz#72becdf17ee44b2d1ac5651fb12f1952c336fe23"
+  integrity sha512-d5RysTlJ7hmw5Tw4UxgxcY3lkMe92n8sXCcuLPAyIAHK6j8DefDwtGnVVDgOnv+RnEosulDJ9NPKQL27bDId0g==
   dependencies:
-    "@jridgewell/sourcemap-codec" "^1.4.9"
-    "@jridgewell/trace-mapping" "^0.2.7"
+    "@jridgewell/trace-mapping" "^0.3.0"
 
 "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
@@ -527,18 +526,18 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.0.4.tgz#b876e3feefb9c8d3aa84014da28b5e52a0640d72"
   integrity sha512-cz8HFjOFfUBtvN+NXYSFMHYRdxZMaEl0XypVrhzxBgadKIXhIkRd8aMeHhmF56Sl7SuS8OnUpQ73/k9LE4VnLg==
 
-"@jridgewell/sourcemap-codec@^1.4.9":
+"@jridgewell/sourcemap-codec@^1.4.10":
   version "1.4.10"
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.10.tgz#baf57b4e2a690d4f38560171f91783656b7f8186"
   integrity sha512-Ht8wIW5v165atIX1p+JvKR5ONzUyF4Ac8DZIQ5kZs9zrb6M8SJNXpx1zn04rn65VjBMygRoMXcyYwNK0fT7bEg==
 
-"@jridgewell/trace-mapping@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.2.7.tgz#d45be64544788e32c7ea5c8faa16a7000d840b5b"
-  integrity sha512-ZKfRhw6eK2vvdWqpU7DQq49+BZESqh5rmkYpNhuzkz01tapssl2sNNy6uMUIgrTtUWQDijomWJzJRCoevVrfgw==
+"@jridgewell/trace-mapping@^0.3.0":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.2.tgz#e051581782a770c30ba219634f2019241c5d3cde"
+  integrity sha512-9KzzH4kMjA2XmBRHfqG2/Vtl7s92l6uNDd0wW7frDE+EUvQFGqNXhWp0UGJjSkt3v2AYjzOZn1QO9XaTNJIt1Q==
   dependencies:
     "@jridgewell/resolve-uri" "^3.0.3"
-    "@jridgewell/sourcemap-codec" "^1.4.9"
+    "@jridgewell/sourcemap-codec" "^1.4.10"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1141,9 +1140,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001286:
-  version "1.0.30001307"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001307.tgz#27a67f13ebc4aa9c977e6b8256a11d5eafb30f27"
-  integrity sha512-+MXEMczJ4FuxJAUp0jvAl6Df0NI/OfW1RWEE61eSmzS7hw6lz4IKutbhbXendwq8BljfFuHtu26VWsg4afQ7Ng==
+  version "1.0.30001309"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001309.tgz#e0ee78b9bec0704f67304b00ff3c5c0c768a9f62"
+  integrity sha512-Pl8vfigmBXXq+/yUz1jUwULeq9xhMJznzdc/xwl4WclDAuebcTHVefpz8lE/bMI+UN7TOkSSe7B7RnZd6+dzjA==
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -1539,9 +1538,9 @@ eslint-plugin-import@^2.25.4:
     tsconfig-paths "^3.12.0"
 
 eslint-plugin-jest@^26.0.0:
-  version "26.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-26.0.0.tgz#f83a25a23ab90ce5b375b1d44389b8c391be5ce8"
-  integrity sha512-Fvs0YgJ/nw9FTrnqTuMGVrkozkd07jkQzWm0ajqyHlfcsdkxGfAuv30fgfWHOnHiCr9+1YQ365CcDX7vrNhqQg==
+  version "26.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-26.1.0.tgz#9f6c33e66f3cef3f2832c3a4d2caa21a75792dee"
+  integrity sha512-vjF6RvcKm4xZSJgCmXb9fXmhzTva+I9jtj9Qv5JeZQTRocU7WT1g3Kx0cZ+00SekPe2DtSWDawHtSj4RaxFhXQ==
   dependencies:
     "@typescript-eslint/utils" "^5.10.0"
 
