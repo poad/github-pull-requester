@@ -6,7 +6,7 @@
   "author": "Kenji Saito <ken-yo@mbr.nifty.com>",
   "license": "MIT",
   "main": "./dist/main.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "yarn clean && yarn lint --fix && tsc",
     "lint": "eslint src/**/*.ts src/*.ts",
@@ -52,12 +52,11 @@
   "exports": {
     ".": {
       "node": "./dist/main.js",
-      "require": "./dist/main.cjs",
       "default": "./dist/main.js"
     }
   },
   "jest": {
-    "preset": "ts-jest/presets/default-esm",
+    "preset": "ts-jest",
     "clearMocks": true,
     "moduleFileExtensions": [
       "ts",
@@ -72,16 +71,13 @@
     "transform": {
       "^.+\\.ts$": "ts-jest"
     },
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ],
     "modulePaths": [
       "<rootDir>/dist",
       "<rootDir>/node_modules"
     ],
     "globals": {
       "ts-jest": {
-        "useESM": true,
+        "useESM": false,
         "tsconfig": "tsconfig.json"
       }
     },
