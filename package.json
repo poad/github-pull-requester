@@ -49,9 +49,6 @@
     "@octokit/plugin-request-log": "*",
     "@octokit/rest": "*"
   },
-  "resolutions": {
-    "@octokit/openapi-types": "12.5.0"
-  },
   "exports": {
     ".": {
       "node": "./dist/main.js",
