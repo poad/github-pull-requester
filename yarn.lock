@@ -659,17 +659,17 @@
     "@octokit/types" "^7.0.0"
     universal-user-agent "^6.0.0"
 
-"@octokit/openapi-types@^13.10.0":
-  version "13.10.0"
-  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-13.10.0.tgz#27e29c97a6dc26e218834730ae3f7ea5e05bcb7f"
-  integrity sha512-wPQDpTyy35D6VS/lekXDaKcxy6LI2hzcbmXBnP180Pdgz3dXRzoHdav0w09yZzzWX8HHLGuqwAeyMqEPtWY2XA==
+"@octokit/openapi-types@^13.11.0":
+  version "13.12.0"
+  resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-13.12.0.tgz#cd49f28127ee06ee3edc6f2b5f5648c7332f6014"
+  integrity sha512-1QYzZrwnn3rTQE7ZoSxXrO8lhu0aIbac1c+qIPOPEaVXBWSaUyLV1x9yt4uDQOwmu6u5ywVS8OJgs+ErDLf6vQ==
 
 "@octokit/plugin-paginate-rest@^4.0.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-4.3.0.tgz#f328665ece9e8def7773c6d5620f4cf94124e037"
-  integrity sha512-4V8hWMoXuxb03xPs3s3RjUb5Bzx4HmVRhG+gvbO08PB48ag6G8mk6/HDFKlAXz9XEorDIkc0pXcXnaOz8spHgg==
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-4.3.1.tgz#553e653ee0318605acd23bf3a799c8bfafdedae3"
+  integrity sha512-h8KKxESmSFTcXX409CAxlaOYscEDvN2KGQRsLCGT1NSqRW+D6EXLVQ8vuHhFznS9MuH9QYw1GfsUN30bg8hjVA==
   dependencies:
-    "@octokit/types" "^7.4.0"
+    "@octokit/types" "^7.5.0"
 
 "@octokit/plugin-request-log@*", "@octokit/plugin-request-log@^1.0.4":
   version "1.0.4"
@@ -677,11 +677,11 @@
   integrity sha512-mLUsMkgP7K/cnFEw07kWqXGF5LKrOkD+lhCrKvPHXWDywAwuDUeDwWBpc69XK3pNX0uKiVt8g5z96PJ6z9xCFA==
 
 "@octokit/plugin-rest-endpoint-methods@^6.0.0":
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-6.6.0.tgz#7bece1ba1b687b723be7d4502c494055fdda0e10"
-  integrity sha512-IAuT/e1gIUVszNmV+vfXNxa6xXI9dlghhBDqLGEmjz3so9sHqOlXN4R5gWcCRJkt4mum4NCaNjUk17yTrK76Rw==
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-6.6.2.tgz#cfd1c7280940d5a82d9af12566bafcb33f22bee4"
+  integrity sha512-n9dL5KMpz9qVFSNdcVWC8ZPbl68QbTk7+CMPXCXqaMZOLn1n1YuoSFFCy84Ge0fx333fUqpnBHv8BFjwGtUQkA==
   dependencies:
-    "@octokit/types" "^7.4.0"
+    "@octokit/types" "^7.5.0"
     deprecation "^2.3.1"
 
 "@octokit/request-error@^3.0.0":
@@ -715,12 +715,12 @@
     "@octokit/plugin-request-log" "^1.0.4"
     "@octokit/plugin-rest-endpoint-methods" "^6.0.0"
 
-"@octokit/types@^7.0.0", "@octokit/types@^7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-7.4.0.tgz#ac2aecc9c46b30f7899976dc7c56b47c0e093688"
-  integrity sha512-ln1GW0p72+P8qeRjHGj0wyR5ePy6slqvczveOqonMk1w1UWua6UgrkwFzv6S0vKWjSqt/ijYXF1ehNVRRRSvLA==
+"@octokit/types@^7.0.0", "@octokit/types@^7.5.0":
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-7.5.0.tgz#85646021bd618467b7cc465d9734b3f2878c9fae"
+  integrity sha512-aHm+olfIZjQpzoODpl+RCZzchKOrdSLJs+yfI7pMMcmB19Li6vidgx0DwUDO/Ic4Q3fq/lOjJORVCcLZefcrJw==
   dependencies:
-    "@octokit/openapi-types" "^13.10.0"
+    "@octokit/openapi-types" "^13.11.0"
 
 "@pkgr/utils@^2.3.1":
   version "2.3.1"
@@ -735,9 +735,9 @@
     tslib "^2.4.0"
 
 "@sinclair/typebox@^0.24.1":
-  version "0.24.41"
-  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.41.tgz#45470b8bae32a28f1e0501066d0bacbd8b772804"
-  integrity sha512-TJCgQurls4FipFvHeC+gfAzb+GGstL0TDwYJKQVtTeSvJIznWzP7g3bAd5gEBlr8+bIxqnWS9VGVWREDhmE8jA==
+  version "0.24.42"
+  resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.42.tgz#a74b608d494a1f4cc079738e050142a678813f52"
+  integrity sha512-d+2AtrHGyWek2u2ITF0lHRIv6Tt7X0dEHW+0rP+5aDCEjC3fiN2RBjrLD0yU0at52BcZbRGxLbAtXiR0hFCjYw==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -1178,9 +1178,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001400:
-  version "1.0.30001402"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001402.tgz#aa29e1f47f5055b0d0c07696a67b8b08023d14c8"
-  integrity sha512-Mx4MlhXO5NwuvXGgVb+hg65HZ+bhUYsz8QtDGDo2QmaJS2GBX47Xfi2koL86lc8K+l+htXeTEB/Aeqvezoo6Ew==
+  version "1.0.30001406"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001406.tgz#d0146e7919635479f873b4507517b627f66ab269"
+  integrity sha512-bWTlaXUy/rq0BBtYShc/jArYfBPjEV95euvZ8JVtO43oQExEN/WquoqpufFjNu4kSpi5cy5kMbNvzztWDfv1Jg==
 
 chalk@^2.0.0:
   version "2.4.2"
