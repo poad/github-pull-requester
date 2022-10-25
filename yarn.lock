@@ -1444,11 +1444,6 @@ electron-to-chromium@^1.4.251:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz#61046d1e4cab3a25238f6bf7413795270f125592"
   integrity sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==
 
-emittery@^0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.10.2.tgz#902eec8aedb8c41938c46e9385e9db7e03182933"
-  integrity sha512-aITqOwnLanpHLNXZJENbOgjUBeHocD+xsSJmNrjovKBW5HbSpW3d1pEls7GFQPUWXiwG9+0P4GtHfEqC/4M0Iw==
-
 emittery@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.13.1.tgz#c04b8c3457490e0847ae51fced3af52d338e3dad"
@@ -2731,21 +2726,7 @@ jest-validate@^29.2.1, jest-validate@^29.2.2:
     leven "^3.1.0"
     pretty-format "^29.2.1"
 
-jest-watcher@^29.2.1:
-  version "29.2.1"
-  resolved "https://registry.yarnpkg.com/jest-watcher/-/jest-watcher-29.2.1.tgz#1cb91f8aa9e77b1332af139944ad65e51430d7c3"
-  integrity sha512-7jFaHUaRq50l4w/f6RuY713bvI5XskMmjWCE54NGYcY74fLkShS8LucXJke1QfGnwDSCoIqGnGGGKPwdaBYz2Q==
-  dependencies:
-    "@jest/test-result" "^29.2.1"
-    "@jest/types" "^29.2.1"
-    "@types/node" "*"
-    ansi-escapes "^4.2.1"
-    chalk "^4.0.0"
-    emittery "^0.10.2"
-    jest-util "^29.2.1"
-    string-length "^4.0.1"
-
-jest-watcher@^29.2.2:
+jest-watcher@^29.2.1, jest-watcher@^29.2.2:
   version "29.2.2"
   resolved "https://registry.yarnpkg.com/jest-watcher/-/jest-watcher-29.2.2.tgz#7093d4ea8177e0a0da87681a9e7b09a258b9daf7"
   integrity sha512-j2otfqh7mOvMgN2WlJ0n7gIx9XCMWntheYGlBK7+5g3b1Su13/UAK7pdKGyd4kDlrLwtH2QPvRv5oNIxWvsJ1w==
