@@ -41,6 +41,7 @@
     "@octokit/core": "*",
     "@octokit/plugin-request-log": "*",
     "@octokit/rest": "*",
+    "got": ">=11.8.5",
     "tunnel": "*"
   },
   "peerDependencies": {
