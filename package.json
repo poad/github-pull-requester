@@ -40,9 +40,7 @@
     "@actions/core": "*",
     "@octokit/core": "*",
     "@octokit/plugin-request-log": "*",
-    "@octokit/rest": "*",
-    "got": ">=11.8.5",
-    "tunnel": "*"
+    "@octokit/rest": "*"
   },
   "peerDependencies": {
     "@actions/core": "*",
@@ -57,8 +55,7 @@
     }
   },
   "resolutions": {
-    "semver-regex": ">=3.1.3",
-    "got": ">=11.8.5"
+    "@octokit/types": "=9.0.0"
   },
   "jest": {
     "preset": "ts-jest",
