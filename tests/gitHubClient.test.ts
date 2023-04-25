@@ -4,7 +4,7 @@ import GitHubClient from '../src/gitHubClient';
 describe('Create pull request', () => {
 
   test('Create the pull request (default)', (): void => {
-    const scope = nock('https://api.github.com');
+    const scope = nock('https://api.github.com/graphql');
     const client = new GitHubClient('dummy');
     client.createPullRequest(
       {
@@ -24,7 +24,7 @@ describe('Create pull request', () => {
   });
 
   test('Create the pull request (omit title, body)', (): void => {
-    const scope = nock('https://api.github.com');
+    const scope = nock('https://api.github.com/graphql');
     const client = new GitHubClient('dummy');
     client.createPullRequest(
       {

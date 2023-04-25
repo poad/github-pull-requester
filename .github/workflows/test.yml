@@ -1,4 +1,4 @@
-name: CI
+name: CI (test)
 
 on:
   pull_request_target:
@@ -12,46 +12,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x, 20.x]
-    
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
-
-      - name: Build and lint
-        run: |
-          yarn install
-          yarn build
-          yarn package
-          yarn test
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 16.x
-          cache: 'yarn'
-
-      - name: Build and lint
-        run: |
-          yarn install
-          yarn lint
 
   test:
     runs-on: ubuntu-latest
@@ -127,21 +87,7 @@ jobs:
             --url ${URL} \
             --header 'content-type: application/vnd.github.sailor-v-preview+json' \
             --header "authorization: bearer ${GH_TOKEN}" \
-            --data "${REQUEST_BODY}"
+            --data "${REQUEST_BODY}";
 
           git push origin :${{ env.BRANCH_NAME }}
           git push origin :${{ env.BASE_BRANCH_NAME }}
-
-  configure:
-    runs-on: ubuntu-latest
-    if: github.actor != 'dependabot[bot]'
-    steps:
-    - name: Pull request auto merge enabler
-      if: github.event_name == 'pull_request'
-      uses: poad/github-pull-request-auto-merge-enable-action@v1.0.2
-      with:
-        pull_request_id: ${{ github.event.pull_request.node_id }}
-        github_token: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
-        repository: ${{ github.event.repository.name }}
-        owner: ${{ github.repository_owner }}
-        merge_method: SQUASH
