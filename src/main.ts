@@ -1,10 +1,10 @@
-import * as core from '@actions/core'
-import GitHubClient, { PullRequestResponse } from './gitHubClient';
+import * as core from '@actions/core';
+import GitHubClient from './gitHubClient';
 
 function run(): void {
   const errHandler = (error: Error) => {
     core.error(error.message);
-    core.setFailed(error.message)
+    core.setFailed(error.message);
   };
 
   try {
@@ -27,13 +27,13 @@ function run(): void {
       title,
       body,
       head,
-      base
+      base,
     };
 
     const gh = new GitHubClient(token);
 
     gh.createPullRequest(req)
-      .then((result: PullRequestResponse) => {
+      .then((result) => {
         core.setOutput('result', result);
       })
       .catch(errHandler);
@@ -41,8 +41,8 @@ function run(): void {
     if (error instanceof Error) {
       errHandler(error);
     } else {
-      core.error(JSON.stringify(error))
-      core.setFailed(JSON.stringify(error))
+      core.error(JSON.stringify(error));
+      core.setFailed(JSON.stringify(error));
     }
   }
 }

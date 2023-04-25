@@ -51,7 +51,7 @@ function run() {
             title,
             body,
             head,
-            base
+            base,
         };
         const gh = new gitHubClient_1.default(token);
         gh.createPullRequest(req)
