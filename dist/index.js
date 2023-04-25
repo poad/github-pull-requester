@@ -5,9 +5,9 @@ query repository($owner: String!, $repo: String!) {
   }
 }
 `;const r=(0,n.gql)`mutation ($base: String!, $head: String!, $repoId: String!, $title: String!, $body: String) {
-  createPullRequest(intput: {
-    baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body
-  }) {
+  createPullRequest(
+    input: {baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
+  ) {
     pullRequest {
       id
     }
