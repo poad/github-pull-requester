@@ -23,6 +23,7 @@ const mutation = gql`mutation ($base: String!, $head: String!, $repoId: ID!, $ti
   ) {
     pullRequest {
       id
+      url
     }
   }
 }`;
