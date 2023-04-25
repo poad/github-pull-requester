@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_request_1 = require("graphql-request");
 const query = (0, graphql_request_1.gql) `
 query repository($owner: String!, $repo: String!) {
-  repository(owner:$owner, name:$repo) {
+  repository(owner: $owner, name: $repo) {
     id
   }
 }
 `;
-const mutation = (0, graphql_request_1.gql) `mutation ($base: String!, $head: String!, $repoId: String!, $title: String!, $body: String) {
+const mutation = (0, graphql_request_1.gql) `mutation ($base: String!, $head: String!, $repoId: ID!, $title: String!, $body: String) {
   createPullRequest(
-    input: {baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
+    input: {baseRefName: $base, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
   ) {
     pullRequest {
       id

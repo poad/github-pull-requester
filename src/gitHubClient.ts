@@ -11,15 +11,15 @@ export interface CreatePullRequestOption {
 
 const query = gql`
 query repository($owner: String!, $repo: String!) {
-  repository(owner:$owner, name:$repo) {
+  repository(owner: $owner, name: $repo) {
     id
   }
 }
 `;
 
-const mutation = gql`mutation ($base: String!, $head: String!, $repoId: String!, $title: String!, $body: String) {
+const mutation = gql`mutation ($base: String!, $head: String!, $repoId: ID!, $title: String!, $body: String) {
   createPullRequest(
-    input: {baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
+    input: {baseRefName: $base, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
   ) {
     pullRequest {
       id
