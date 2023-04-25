@@ -1,39 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_1 = require("@octokit/graphql");
-class GitHubClient {
-    token;
-    constructor(token) {
-        this.token = token;
+const graphql_request_1 = require("graphql-request");
+const query = (0, graphql_request_1.gql) `
+query repository($owner: String!, $repo: String!) {
+  repository(owner:$owner, name:$repo) {
+    id
+  }
+}
+`;
+const mutation = (0, graphql_request_1.gql) `mutation ($base: String!, $head: String!, $repoId: String!, $title: String!, $body: String) {
+  createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body) {
+    pullRequest {
+      id
     }
-    async createPullRequest({ owner, repo, head, base, title, }) {
-        const { repository } = await (0, graphql_1.graphql)({
-            query: `query repository($owner: String!, $repo: String!) {
-        repository(owner:$owner, name:$repo) {
-          id
-        }
-      }`,
-            owner,
-            repo,
+  }
+}`;
+class GitHubClient {
+    client;
+    constructor(token) {
+        this.client = new graphql_request_1.GraphQLClient('https://api.github.com/graphql', {
             headers: {
-                authorization: this.token,
+                authorization: `bearer ${token}`,
             },
         });
-        return await (0, graphql_1.graphql)({
-            mutation: `mutation ($base: String!, $head: String!, $repoId: String!, $title: String!) {
-        createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title) {
-          pullRequest {
-            id
-          }
-        }
-      }`,
+    }
+    async createPullRequest({ owner, repo, head, base, title, body, }) {
+        const { repository } = await this.client.request(query, {
+            owner,
+            repo,
+        });
+        return await this.client.request(mutation, {
             base,
             head,
             repoId: repository.id,
             title,
-            headers: {
-                authorization: this.token,
-            },
+            body,
         });
     }
 }

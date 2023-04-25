@@ -1,5 +1,4 @@
-import { graphql } from '@octokit/graphql';
-import type { GraphQlQueryResponseData } from '@octokit/graphql';
+import { gql, GraphQLClient } from 'graphql-request';
 
 export interface CreatePullRequestOption {
   owner: string;
@@ -10,10 +9,30 @@ export interface CreatePullRequestOption {
   body?: string;
 }
 
+const query = gql`
+query repository($owner: String!, $repo: String!) {
+  repository(owner:$owner, name:$repo) {
+    id
+  }
+}
+`;
+
+const mutation = gql`mutation ($base: String!, $head: String!, $repoId: String!, $title: String!, $body: String) {
+  createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body) {
+    pullRequest {
+      id
+    }
+  }
+}`;
+
 class GitHubClient {
-  token: string;
+  client: GraphQLClient;
   constructor(token: string) {
-    this.token = token;
+    this.client = new GraphQLClient('https://api.github.com/graphql', {
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    });
   }
 
   async createPullRequest({
@@ -22,35 +41,21 @@ class GitHubClient {
     head,
     base,
     title,
-  }: CreatePullRequestOption): Promise<GraphQlQueryResponseData> {
-    const { repository } = await graphql<GraphQlQueryResponseData>({
-      query: `query repository($owner: String!, $repo: String!) {
-        repository(owner:$owner, name:$repo) {
-          id
-        }
-      }`,
+    body,
+  }: CreatePullRequestOption): Promise<{ repository: { id: string } }> {
+    const { repository } = await this.client.request<{
+      repository: { id: string };
+    }>(query, {
       owner,
       repo,
-      headers: {
-        authorization: this.token,
-      },
     });
 
-    return await graphql<GraphQlQueryResponseData>({
-      mutation: `mutation ($base: String!, $head: String!, $repoId: String!, $title: String!) {
-        createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title) {
-          pullRequest {
-            id
-          }
-        }
-      }`,
+    return await this.client.request(mutation, {
       base,
       head,
       repoId: repository.id,
       title,
-      headers: {
-        authorization: this.token,
-      },
+      body,
     });
   }
 }

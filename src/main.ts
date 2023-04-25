@@ -4,6 +4,9 @@ import GitHubClient from './gitHubClient';
 function run(): void {
   const errHandler = (error: Error) => {
     core.error(error.message);
+    if (core.isDebug()) {
+      core.error(error);
+    }
     core.setFailed(error.message);
   };
 

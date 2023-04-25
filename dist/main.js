@@ -31,6 +31,9 @@ const gitHubClient_1 = __importDefault(require("./gitHubClient"));
 function run() {
     const errHandler = (error) => {
         core.error(error.message);
+        if (core.isDebug()) {
+            core.error(error);
+        }
         core.setFailed(error.message);
     };
     try {
