@@ -14,6 +14,7 @@ const mutation = (0, graphql_request_1.gql) `mutation ($base: String!, $head: St
   ) {
     pullRequest {
       id
+      url
     }
   }
 }`;
