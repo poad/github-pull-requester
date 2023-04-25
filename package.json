@@ -36,12 +36,14 @@
   "dependencies": {
     "@actions/core": "*",
     "@octokit/core": "*",
-    "@octokit/graphql": "*"
+    "graphql": "*",
+    "graphql-request": "*"
   },
   "peerDependencies": {
     "@actions/core": "*",
     "@octokit/core": "*",
-    "@octokit/graphql": "*"
+    "graphql": "*",
+    "graphql-request": "*"
   },
   "exports": {
     ".": {

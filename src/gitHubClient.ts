@@ -1,5 +1,4 @@
-import { graphql } from '@octokit/graphql';
-import type { GraphQlQueryResponseData } from '@octokit/graphql';
+import { gql, GraphQLClient } from 'graphql-request';
 
 export interface CreatePullRequestOption {
   owner: string;
@@ -10,12 +9,28 @@ export interface CreatePullRequestOption {
   body?: string;
 }
 
+const query = gql`
+query repository($owner: String!, $repo: String!) {
+  repository(owner:$owner, name:$repo) {
+    id
+  }
+}
+`;
+
+const mutation = gql`mutation ($base: String!, $head: String!, $repoId: String!, $title: String!, $body: String) {
+  createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title, body: $body) {
+    pullRequest {
+      id
+    }
+  }
+}`;
+
 class GitHubClient {
-  client: typeof graphql;
+  client: GraphQLClient;
   constructor(token: string) {
-    this.client = graphql.defaults({
+    this.client = new GraphQLClient('https://api.github.com/graphql', {
       headers: {
-        authorization: `token ${token}`,
+        authorization: `bearer ${token}`,
       },
     });
   }
@@ -26,29 +41,21 @@ class GitHubClient {
     head,
     base,
     title,
-  }: CreatePullRequestOption): Promise<GraphQlQueryResponseData> {
-    const { repository } = await this.client<GraphQlQueryResponseData>({
-      query: `query repository($owner: String!, $repo: String!) {
-        repository(owner:$owner, name:$repo) {
-          id
-        }
-      }`,
+    body,
+  }: CreatePullRequestOption): Promise<{ repository: { id: string } }> {
+    const { repository } = await this.client.request<{
+      repository: { id: string };
+    }>(query, {
       owner,
       repo,
     });
 
-    return await this.client<GraphQlQueryResponseData>({
-      mutation: `mutation ($base: String!, $head: String!, $repoId: String!, $title: String!) {
-        createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title) {
-          pullRequest {
-            id
-          }
-        }
-      }`,
+    return await this.client.request(mutation, {
       base,
       head,
       repoId: repository.id,
       title,
+      body,
     });
   }
 }
