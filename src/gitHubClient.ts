@@ -11,9 +11,13 @@ export interface CreatePullRequestOption {
 }
 
 class GitHubClient {
-  token: string;
+  client: typeof graphql;
   constructor(token: string) {
-    this.token = token;
+    this.client = graphql.defaults({
+      headers: {
+        authorization: `token ${token}`,
+      },
+    });
   }
 
   async createPullRequest({
@@ -23,7 +27,7 @@ class GitHubClient {
     base,
     title,
   }: CreatePullRequestOption): Promise<GraphQlQueryResponseData> {
-    const { repository } = await graphql<GraphQlQueryResponseData>({
+    const { repository } = await this.client<GraphQlQueryResponseData>({
       query: `query repository($owner: String!, $repo: String!) {
         repository(owner:$owner, name:$repo) {
           id
@@ -31,12 +35,9 @@ class GitHubClient {
       }`,
       owner,
       repo,
-      headers: {
-        authorization: this.token,
-      },
     });
 
-    return await graphql<GraphQlQueryResponseData>({
+    return await this.client<GraphQlQueryResponseData>({
       mutation: `mutation ($base: String!, $head: String!, $repoId: String!, $title: String!) {
         createPullRequest(baseRefName: $owner, headRefName: $head, repositoryId: $repoId, title: $title) {
           pullRequest {
@@ -48,9 +49,6 @@ class GitHubClient {
       head,
       repoId: repository.id,
       title,
-      headers: {
-        authorization: this.token,
-      },
     });
   }
 }
