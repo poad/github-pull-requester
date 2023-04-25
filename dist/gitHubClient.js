@@ -32,13 +32,16 @@ class GitHubClient {
             owner,
             repo,
         });
-        return await this.client.request(mutation, {
+        const result = await this.client.request(mutation, {
             base,
             head,
             repoId: repository.id,
             title,
             body,
         });
+        return {
+            data: result.createPullRequest.pullRequest,
+        };
     }
 }
 exports.default = GitHubClient;

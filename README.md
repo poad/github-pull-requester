@@ -4,7 +4,7 @@
 ![CI](https://github.com/poad/github-pull-requester/workflows/CI/badge.svg)
 [![GitHub release](https://img.shields.io/github/release/poad/github-pull-requester.svg)](https://GitHub.com/poad/github-pull-requester/releases/)
 
-Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.js/).
+Create a new Pull Request by GitHub GraphQL API.
 
 ## Useage
 
@@ -39,4 +39,7 @@ Create a new Pull Request by [octokit/rest.js](https://github.com/octokit/rest.j
 
 ### value
 
-[Response of create Pull Request API](https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#create-a-pull-request)
+| key | value |
+|-----|-------|
+| id | GraphQL Node ID of GitHub Pull Request. |
+| url | URL of GitHub Pull Request. |
