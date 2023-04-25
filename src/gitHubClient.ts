@@ -28,6 +28,21 @@ const mutation = gql`mutation ($base: String!, $head: String!, $repoId: ID!, $ti
   }
 }`;
 
+interface QueryRepositroyResponse {
+  repository: { id: string };
+}
+
+interface PullRequestResponse {
+  id: string;
+  url: string;
+}
+
+interface CreatePullRequestResponse {
+  createPullRequest: {
+    pullRequest: PullRequestResponse;
+  };
+}
+
 class GitHubClient {
   client: GraphQLClient;
   constructor(token: string) {
@@ -45,21 +60,26 @@ class GitHubClient {
     base,
     title,
     body,
-  }: CreatePullRequestOption): Promise<{ repository: { id: string } }> {
-    const { repository } = await this.client.request<{
-      repository: { id: string };
-    }>(query, {
-      owner,
-      repo,
-    });
+  }: CreatePullRequestOption): Promise<PullRequestResponse> {
+    const { repository } = await this.client.request<QueryRepositroyResponse>(
+      query,
+      {
+        owner,
+        repo,
+      },
+    );
 
-    return await this.client.request(mutation, {
-      base,
-      head,
-      repoId: repository.id,
-      title,
-      body,
-    });
+    const result = await this.client.request<CreatePullRequestResponse>(
+      mutation,
+      {
+        base,
+        head,
+        repoId: repository.id,
+        title,
+        body,
+      },
+    );
+    return result.createPullRequest.pullRequest;
   }
 }
 
