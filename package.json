@@ -26,10 +26,10 @@
     "@types/jest": "*",
     "@types/node": "*",
     "@vercel/ncc": "*",
-    "rome": "*",
     "jest": "*",
     "jest-circus": "*",
     "nock": "*",
+    "rome": "*",
     "ts-jest": "*",
     "typescript": "*"
   },
