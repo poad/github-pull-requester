@@ -24,6 +24,7 @@ const mutation = gql`mutation ($base: String!, $head: String!, $repoId: ID!, $ti
     pullRequest {
       id
       url
+      number
     }
   }
 }`;
@@ -35,6 +36,7 @@ interface QueryRepositroyResponse {
 interface PullRequestResponse {
   id: string;
   url: string;
+  number: number;
 }
 
 interface CreatePullRequestResponse {
