@@ -615,9 +615,9 @@
     once "^1.4.0"
 
 "@octokit/request@^6.0.0":
-  version "6.2.5"
-  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-6.2.5.tgz#7beef1065042998f7455973ef3f818e7b84d6ec2"
-  integrity sha512-z83E8UIlPNaJUsXpjD8E0V5o/5f+vJJNbNcBwVZsX3/vC650U41cOkTLjq4PKk9BYonQGOnx7N17gvLyNjgGcQ==
+  version "6.2.6"
+  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-6.2.6.tgz#ff8f503c690f84e3ebd33d2d43e63c0a27ac50e0"
+  integrity sha512-T/waXf/xjie8Qn5IyFYAcI/HXvw9SPkcQWErGP9H471IWRDRCN+Gn/QOptPMAZRT4lJb2bLHxQfCXjU0mJRyng==
   dependencies:
     "@octokit/endpoint" "^7.0.0"
     "@octokit/request-error" "^3.0.0"
@@ -627,9 +627,9 @@
     universal-user-agent "^6.0.0"
 
 "@octokit/types@^9.0.0":
-  version "9.3.1"
-  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-9.3.1.tgz#9eb20390f8cfcc975635d813f9a2094efd4aa2dd"
-  integrity sha512-zfJzyXLHC42sWcn2kS+oZ/DRvFZBYCCbfInZtwp1Uopl1qh6pRg4NSP/wFX1xCOpXvEkctiG1sxlSlkZmzvxdw==
+  version "9.3.2"
+  resolved "https://registry.yarnpkg.com/@octokit/types/-/types-9.3.2.tgz#3f5f89903b69f6a2d196d78ec35f888c0013cac5"
+  integrity sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA==
   dependencies:
     "@octokit/openapi-types" "^18.0.0"
 
@@ -1100,9 +1100,9 @@ diff-sequences@^29.4.3:
   integrity sha512-ofrBgwpPhCD85kMKtE9RYFFq6OC1A89oW2vvgWZNCwxrUpRUILopY7lsYyMDSjc8g6U6aiO0Qubg6r4Wgt5ZnA==
 
 electron-to-chromium@^1.4.428:
-  version "1.4.428"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.428.tgz#c31fc88e854f49d8305cdabf6ec934ff1588a902"
-  integrity sha512-L7uUknyY286of0AYC8CKfgWstD0Smk2DvHDi9F0GWQhSH90Bzi7iDrmCbZKz75tYJxeGSAc7TYeKpmbjMDoh1w==
+  version "1.4.430"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.430.tgz#52693c812a81800fafb5b312c1a850142e2fc9eb"
+  integrity sha512-FytjTbGwz///F+ToZ5XSeXbbSaXalsVRXsz2mHityI5gfxft7ieW3HqFLkU5V1aIrY42aflICqbmFoDxW10etg==
 
 emittery@^0.13.1:
   version "0.13.1"
