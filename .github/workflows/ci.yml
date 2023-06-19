@@ -23,16 +23,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.6.0
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          version: 8.6.2
+          run_install: |
+            - recursive: true
+              args: [--no-frozen-lockfile, --strict-peer-dependencies]
 
       - name: Build and lint
         run: |
-          yarn package
-          yarn test
+          pnpm package
+          pnpm test
 
   configure:
     runs-on: ubuntu-latest
