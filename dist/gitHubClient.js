@@ -1,14 +1,18 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_request_1 = require("graphql-request");
-const query = (0, graphql_request_1.gql) `
+const graphql_1 = require("@octokit/graphql");
+const node_fetch_1 = __importDefault(require("node-fetch"));
+const query = `
 query repository($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
     id
   }
 }
 `;
-const mutation = (0, graphql_request_1.gql) `mutation ($base: String!, $head: String!, $repoId: ID!, $title: String!, $body: String) {
+const mutation = `mutation ($base: String!, $head: String!, $repoId: ID!, $title: String!, $body: String) {
   createPullRequest(
     input: {baseRefName: $base, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
   ) {
@@ -20,25 +24,33 @@ const mutation = (0, graphql_request_1.gql) `mutation ($base: String!, $head: St
   }
 }`;
 class GitHubClient {
-    client;
+    token;
     constructor(token) {
-        this.client = new graphql_request_1.GraphQLClient('https://api.github.com/graphql', {
-            headers: {
-                authorization: `bearer ${token}`,
-            },
-        });
+        this.token = token;
     }
     async createPullRequest({ owner, repo, head, base, title, body, }) {
-        const { repository } = await this.client.request(query, {
+        const { repository } = await (0, graphql_1.graphql)(query, {
             owner,
             repo,
+            headers: {
+                authorization: `token ${this.token}`,
+            },
+            request: {
+                fetch: node_fetch_1.default,
+            },
         });
-        const result = await this.client.request(mutation, {
+        const result = await (0, graphql_1.graphql)(mutation, {
             base,
             head,
             repoId: repository.id,
             title,
             body,
+            headers: {
+                authorization: `token ${this.token}`,
+            },
+            request: {
+                fetch: node_fetch_1.default,
+            },
         });
         return {
             data: result.createPullRequest.pullRequest,
