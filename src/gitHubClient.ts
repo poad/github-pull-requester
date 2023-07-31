@@ -1,4 +1,5 @@
-import { gql, GraphQLClient } from 'graphql-request';
+import { graphql } from '@octokit/graphql';
+import fetch from 'node-fetch';
 
 export interface CreatePullRequestOption {
   owner: string;
@@ -9,7 +10,7 @@ export interface CreatePullRequestOption {
   body?: string;
 }
 
-const query = gql`
+const query = `
 query repository($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
     id
@@ -17,7 +18,7 @@ query repository($owner: String!, $repo: String!) {
 }
 `;
 
-const mutation = gql`mutation ($base: String!, $head: String!, $repoId: ID!, $title: String!, $body: String) {
+const mutation = `mutation ($base: String!, $head: String!, $repoId: ID!, $title: String!, $body: String) {
   createPullRequest(
     input: {baseRefName: $base, headRefName: $head, repositoryId: $repoId, title: $title, body: $body}
   ) {
@@ -46,13 +47,10 @@ interface CreatePullRequestResponse {
 }
 
 class GitHubClient {
-  client: GraphQLClient;
+  private token: string;
+
   constructor(token: string) {
-    this.client = new GraphQLClient('https://api.github.com/graphql', {
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    });
+    this.token = token;
   }
 
   async createPullRequest({
@@ -63,24 +61,30 @@ class GitHubClient {
     title,
     body,
   }: CreatePullRequestOption): Promise<{ data: PullRequestResponse }> {
-    const { repository } = await this.client.request<QueryRepositroyResponse>(
-      query,
-      {
-        owner,
-        repo,
+    const { repository } = await graphql<QueryRepositroyResponse>(query, {
+      owner,
+      repo,
+      headers: {
+        authorization: `token ${this.token}`,
       },
-    );
+      request: {
+        fetch,
+      },
+    });
 
-    const result = await this.client.request<CreatePullRequestResponse>(
-      mutation,
-      {
-        base,
-        head,
-        repoId: repository.id,
-        title,
-        body,
+    const result = await graphql<CreatePullRequestResponse>(mutation, {
+      base,
+      head,
+      repoId: repository.id,
+      title,
+      body,
+      headers: {
+        authorization: `token ${this.token}`,
       },
-    );
+      request: {
+        fetch,
+      },
+    });
     return {
       data: result.createPullRequest.pullRequest,
     };
