@@ -15,7 +15,7 @@
     "check-fix": "rome check --apply src",
     "lint": "pnpm format-check && pnpm check",
     "lint-fix": "pnpm format && pnpm check-fix",
-    "test": "NODE_ENV=test jest --coverage --passWithNoTests --detectOpenHandles",
+    "test": "NODE_ENV=test jest --coverage --passWithNoTests",
     "package": "ncc build --source-map --license licenses.txt -m -q",
     "clean": "rm -rf dist",
     "prepackage": "pnpm build",
@@ -23,14 +23,17 @@
     "preclean": "pnpm install"
   },
   "devDependencies": {
+    "@jest/globals": "^29.6.2",
+    "@swc/core": "^1.3.72",
+    "@swc/jest": "^0.2.27",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
     "@vercel/ncc": "^0.36.1",
     "jest": "^29.6.2",
     "jest-circus": "^29.6.2",
     "nock": "^13.3.2",
+    "regenerator-runtime": "^0.13.11",
     "rome": "^12.1.3",
-    "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
@@ -52,31 +55,12 @@
     }
   },
   "jest": {
-    "preset": "ts-jest",
-    "clearMocks": true,
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "json",
-      "node"
-    ],
     "testMatch": [
       "**/tests/**/*.test.ts"
     ],
-    "testRunner": "jest-circus/runner",
     "transform": {
-      "^.+\\.ts$": [
-        "ts-jest",
-        {
-          "useESM": true,
-          "tsconfig": "tsconfig.json"
-        }
-      ]
+      "^.+\\.(t|j)sx?$": "@swc/jest"
     },
-    "modulePaths": [
-      "<rootDir>/dist",
-      "<rootDir>/node_modules"
-    ],
-    "verbose": true
+    "transformIgnorePatterns": ["node_modules/(?!(?:.pnpm/)?.+)"]
   }
 }
