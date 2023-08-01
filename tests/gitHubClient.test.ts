@@ -1,3 +1,4 @@
+import {test, describe} from '@jest/globals'
 import nock from 'nock';
 import GitHubClient from '../src/gitHubClient';
 
