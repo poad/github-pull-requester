@@ -37,13 +37,13 @@ function run() {
         core.setFailed(error.message);
     };
     try {
-        const token = core.getInput('github_token');
-        const head = core.getInput('head_branch');
-        const base = core.getInput('base_branch');
-        const title = core.getInput('title');
-        const body = core.getInput('body');
-        const owner = core.getInput('owner');
-        const repository = core.getInput('repository');
+        const token = core.getInput("github_token");
+        const head = core.getInput("head_branch");
+        const base = core.getInput("base_branch");
+        const title = core.getInput("title");
+        const body = core.getInput("body");
+        const owner = core.getInput("owner");
+        const repository = core.getInput("repository");
         core.info(`owner: ${owner}`);
         core.info(`repo: ${repository}`);
         core.info(`HEAD: ${head}`);
@@ -59,7 +59,7 @@ function run() {
         const gh = new gitHubClient_1.default(token);
         gh.createPullRequest(req)
             .then((result) => {
-            core.setOutput('result', result);
+            core.setOutput("result", result);
         })
             .catch(errHandler);
     }
