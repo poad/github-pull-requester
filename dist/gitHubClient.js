@@ -1,10 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = require("@octokit/graphql");
-const node_fetch_1 = __importDefault(require("node-fetch"));
 const query = `
 query repository($owner: String!, $repo: String!) {
   repository(owner: $owner, name: $repo) {
@@ -36,7 +32,7 @@ class GitHubClient {
                 authorization: `token ${this.token}`,
             },
             request: {
-                fetch: node_fetch_1.default,
+                fetch,
             },
         });
         const result = await (0, graphql_1.graphql)(mutation, {
@@ -49,7 +45,7 @@ class GitHubClient {
                 authorization: `token ${this.token}`,
             },
             request: {
-                fetch: node_fetch_1.default,
+                fetch,
             },
         });
         return {
