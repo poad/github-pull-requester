@@ -2,7 +2,7 @@ name: CI (test)
 
 on:
   pull_request_target:
-    branches: 
+    branches:
       - 'main'
       - '!test-base-*'
   push:
@@ -11,13 +11,18 @@ on:
 
   workflow_dispatch:
 
-permissions: write-all
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     if: github.actor != 'dependabot[bot]'
+
+    strategy:
+      matrix:
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -32,10 +37,10 @@ jobs:
             - recursive: true
               args: [--no-frozen-lockfile]
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3.7.0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - name: Build
@@ -47,49 +52,51 @@ jobs:
           git config --local user.name "Kenji Saito"
 
       - name: Create base branch
+        id: create-base-branch
         run: |
           BASE_BRANCH_NAME="test-base-$(date "+%Y%m%d-%H%M%S")"
           git switch -c "${BASE_BRANCH_NAME}"
           touch test.txt
           git add test.txt
           git commit -m "Test $(date)"
-          echo "BASE_BRANCH_NAME=${BASE_BRANCH_NAME}" >> $GITHUB_ENV
+          echo "BASE_BRANCH_NAME=${BASE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
 
       - name: Push Base
         uses: ad-m/github-push-action@v0.8.0
         with:
-          github_token: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
-          branch: ${{ env.BASE_BRANCH_NAME }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
 
       - name: Create head branch
+        id: create-head-branch
         run: |
           BRANCH_NAME="test-$(date "+%Y%m%d-%H%M%S")"
           git switch -c "${BRANCH_NAME}"
           touch test1.txt
           git add test1.txt
           git commit -m "Test $(date)"
-          echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
+          echo "BRANCH_NAME=${BRANCH_NAME}" >> "$GITHUB_OUTPUT"
 
       - name: Push Changes
         uses: ad-m/github-push-action@v0.8.0
         with:
-          github_token: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
-          branch: ${{ env.BRANCH_NAME }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.create-head-branch.outputs.BRANCH_NAME }}
 
       - name: Create pull request
         uses: ./
         id: create-pull-request
         with:
-          head_branch: ${{ env.BRANCH_NAME }}
-          base_branch: ${{ env.BASE_BRANCH_NAME }}
-          github_token: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
+          head_branch: ${{ steps.create-head-branch.outputs.BRANCH_NAME }}
+          base_branch: ${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: github-pull-requester
           owner: poad
 
       - name: Close pull request for test
         env:
           RESULT: ${{ steps.create-pull-request.outputs.result }}
-          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN_FOR_GITHUB_ACTIONS }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           URL=$(echo ${RESULT} | jq -r .data.url)
           echo ${URL}
@@ -102,5 +109,5 @@ jobs:
             --header "authorization: bearer ${GH_TOKEN}" \
             --data "${REQUEST_BODY}";
 
-          git push origin :${{ env.BRANCH_NAME }}
-          git push origin :${{ env.BASE_BRANCH_NAME }}
+          git push origin :${{ steps.create-head-branch.outputs.BRANCH_NAME }}
+          git push origin :${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}

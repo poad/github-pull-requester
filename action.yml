@@ -29,5 +29,5 @@ outputs:
   result:
     description: A data object include the REST API response for creating a Pull Request.
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
