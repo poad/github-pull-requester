@@ -10,7 +10,7 @@ Create a new Pull Request by GitHub GraphQL API.
 
 ```$yaml
 - name: Create a new Pull Request
-  uses: poad/github-pull-requester@v1.1.2
+  uses: poad/github-pull-requester@v2.0.0
   with:
       head_branch: { name of head branch }
       base_branch: master # If omitted, it is equivalent to specifying main.
