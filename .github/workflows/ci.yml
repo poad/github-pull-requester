@@ -2,7 +2,7 @@ name: CI
 
 on:
   pull_request:
-    branches: 
+    branches:
       - 'main'
       - '!test-base-*'
   push:
@@ -17,26 +17,26 @@ jobs:
     strategy:
       matrix:
         node-version: [20.x]
-    
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          run_install: |
-            - recursive: true
-              args: [--no-frozen-lockfile]
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: latest
+          run_install: |
+            - recursive: true
+              args: [--no-frozen-lockfile]
+
       - name: Build and lint
         run: |
           pnpm package
