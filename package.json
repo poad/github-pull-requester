@@ -23,7 +23,7 @@
     "preclean": "pnpm install"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "^1.9.3",
     "@jest/globals": "^29.7.0",
     "@swc/core": "^1.7.28",
     "@swc/jest": "^0.2.36",
