@@ -1,4 +1,4 @@
-import { graphql } from "@octokit/graphql";
+import { graphql } from '@octokit/graphql';
 
 export interface CreatePullRequestOption {
   owner: string;

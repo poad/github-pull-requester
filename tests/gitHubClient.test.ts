@@ -1,4 +1,4 @@
-import {test, describe} from '@jest/globals'
+import { describe, test } from 'vitest';
 import nock from 'nock';
 import GitHubClient from '../src/gitHubClient';
 
@@ -19,7 +19,7 @@ describe('Create pull request', () => {
     )
     .then(() => {})
     .catch(error => {
-      
+
     });
     scope.done();
   });

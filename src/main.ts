@@ -1,5 +1,5 @@
-import * as core from "@actions/core";
-import GitHubClient from "./gitHubClient";
+import * as core from '@actions/core';
+import GitHubClient from './gitHubClient.js';
 
 function run(): void {
   const errHandler = (error: Error) => {
@@ -11,13 +11,13 @@ function run(): void {
   };
 
   try {
-    const token: string = core.getInput("github_token");
-    const head: string = core.getInput("head_branch");
-    const base: string = core.getInput("base_branch");
-    const title: string = core.getInput("title");
-    const body: string = core.getInput("body");
-    const owner: string = core.getInput("owner");
-    const repository: string = core.getInput("repository");
+    const token: string = core.getInput('github_token');
+    const head: string = core.getInput('head_branch');
+    const base: string = core.getInput('base_branch');
+    const title: string = core.getInput('title');
+    const body: string = core.getInput('body');
+    const owner: string = core.getInput('owner');
+    const repository: string = core.getInput('repository');
 
     core.info(`owner: ${owner}`);
     core.info(`repo: ${repository}`);
@@ -37,7 +37,7 @@ function run(): void {
 
     gh.createPullRequest(req)
       .then((result) => {
-        core.setOutput("result", result);
+        core.setOutput('result', result);
       })
       .catch(errHandler);
   } catch (error) {
