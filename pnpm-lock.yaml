@@ -789,8 +789,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.44:
-    resolution: {integrity: sha512-Lz3POUa7wANQA8G+9btKAdH+cqkfWCBdkotvQZJVOqRXMYGm1tTD835Z01iCjWpEBf0RInPBWuPfzhGbxOCULw==}
+  electron-to-chromium@1.5.45:
+    resolution: {integrity: sha512-vOzZS6uZwhhbkZbcRyiy99Wg+pYFV5hk+5YaECvx0+Z31NR3Tt5zS6dze2OepT6PCTzVzT0dIJItti+uAW5zmw==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -876,8 +876,8 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-escompat@3.11.3:
-    resolution: {integrity: sha512-Gz/eTJzl7fK9SPBkvB3t+xc1iribxRc5Fgu6Z7206b5q1d7kG0t8Drtin8MRY4UgGBg8Zu1HG6RGzR35LCUpLA==}
+  eslint-plugin-escompat@3.11.4:
+    resolution: {integrity: sha512-j0ywwNnIufshOzgAu+PfIig1c7VRClKSNKzpniMT2vXQ4leL5q+e/SpMFQU0nrdL2WFFM44XmhSuwmxb3G0CJg==}
     peerDependencies:
       eslint: '>=5.14.1'
 
@@ -2426,7 +2426,7 @@ snapshots:
   browserslist@4.24.2:
     dependencies:
       caniuse-lite: 1.0.30001669
-      electron-to-chromium: 1.5.44
+      electron-to-chromium: 1.5.45
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
 
@@ -2523,7 +2523,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.44: {}
+  electron-to-chromium@1.5.45: {}
 
   emoji-regex@8.0.0: {}
 
@@ -2675,7 +2675,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-escompat@3.11.3(eslint@9.13.0):
+  eslint-plugin-escompat@3.11.4(eslint@9.13.0):
     dependencies:
       browserslist: 4.24.2
       eslint: 9.13.0
@@ -2702,7 +2702,7 @@ snapshots:
       aria-query: 5.3.2
       eslint: 9.13.0
       eslint-config-prettier: 9.1.0(eslint@9.13.0)
-      eslint-plugin-escompat: 3.11.3(eslint@9.13.0)
+      eslint-plugin-escompat: 3.11.4(eslint@9.13.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@9.13.0)
       eslint-plugin-filenames: 1.3.2(eslint@9.13.0)
       eslint-plugin-i18n-text: 1.0.1(eslint@9.13.0)
