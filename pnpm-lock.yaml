@@ -46,8 +46,8 @@ importers:
         specifier: ^9.16.0
         version: 9.16.0
       eslint-plugin-github:
-        specifier: ^5.1.3
-        version: 5.1.3(eslint@9.16.0)(typescript@5.7.2)
+        specifier: ^5.1.4
+        version: 5.1.4(eslint@9.16.0)(typescript@5.7.2)
       nock:
         specifier: ^13.5.6
         version: 13.5.6
@@ -816,8 +816,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.68:
-    resolution: {integrity: sha512-FgMdJlma0OzUYlbrtZ4AeXjKxKPk6KT8WOP8BjcqxWtlg8qyJQjRzPJzUtUn5GBg1oQ26hFs7HOOHJMYiJRnvQ==}
+  electron-to-chromium@1.5.71:
+    resolution: {integrity: sha512-dB68l59BI75W1BUGVTAEJy45CEVuEGy9qPVVQ8pnHyHMn36PLPPoE1mjLH+lo9rKulO3HC2OhbACI/8tCqJBcA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -918,8 +918,8 @@ packages:
     peerDependencies:
       eslint: '*'
 
-  eslint-plugin-github@5.1.3:
-    resolution: {integrity: sha512-/0lyEqLLodXW3p+D9eYtmEp6e9DcJmV5FhnE9wNWV1bcqyShuZFXn5kOeJIvxSbFbdbrKiNO8zFiV/VXeSpRSw==}
+  eslint-plugin-github@5.1.4:
+    resolution: {integrity: sha512-j5IgIxsDoch06zJzeqPvenfzRXDKI9Z8YwfUg1pm2ay1q44tMSFwvEu6l0uEIrTpA3v8QdPyLr98LqDl1TIhSA==}
     hasBin: true
     peerDependencies:
       eslint: ^8 || ^9
@@ -2473,7 +2473,7 @@ snapshots:
   browserslist@4.24.2:
     dependencies:
       caniuse-lite: 1.0.30001686
-      electron-to-chromium: 1.5.68
+      electron-to-chromium: 1.5.71
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
 
@@ -2570,7 +2570,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.68: {}
+  electron-to-chromium@1.5.71: {}
 
   emoji-regex@8.0.0: {}
 
@@ -2726,7 +2726,7 @@ snapshots:
       lodash.snakecase: 4.1.1
       lodash.upperfirst: 4.3.1
 
-  eslint-plugin-github@5.1.3(eslint@9.16.0)(typescript@5.7.2):
+  eslint-plugin-github@5.1.4(eslint@9.16.0)(typescript@5.7.2):
     dependencies:
       '@eslint/compat': 1.2.4(eslint@9.16.0)
       '@eslint/eslintrc': 3.2.0
