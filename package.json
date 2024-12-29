@@ -13,10 +13,7 @@
     "lint": "eslint src/**/*.ts",
     "test": "vitest run --silent=false --coverage",
     "package": "ncc build --source-map --license licenses.txt -q --target es2023",
-    "clean": "rm -rf dist",
-    "prepackage": "pnpm build",
-    "prebuild": "pnpm clean && pnpm lint-fix",
-    "preclean": "pnpm install"
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^2.12.1",
