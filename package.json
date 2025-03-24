@@ -16,15 +16,15 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
+    "@eslint/js": "^9.23.0",
     "@stylistic/eslint-plugin": "^4.2.0",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "@stylistic/eslint-plugin-plus": "^4.2.0",
     "@stylistic/eslint-plugin-ts": "^4.2.0",
-    "@types/node": "^22.13.11",
+    "@types/node": "^22.13.12",
     "@vercel/ncc": "^0.38.3",
     "@vitest/coverage-v8": "^3.0.9",
-    "eslint": "^9.22.0",
+    "eslint": "^9.23.0",
     "eslint-plugin-github": "^6.0.0",
     "nock": "^14.0.1",
     "pnpm": "^10.6.5",
