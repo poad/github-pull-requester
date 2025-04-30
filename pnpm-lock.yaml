@@ -55,13 +55,13 @@ importers:
         specifier: ^14.0.4
         version: 14.0.4
       pnpm:
-        specifier: ^10.9.0
+        specifier: ^10.10.0
         version: 10.10.0
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
       typescript-eslint:
-        specifier: ^8.31.0
+        specifier: ^8.31.1
         version: 8.31.1(eslint@9.25.1)(typescript@5.8.3)
       vite:
         specifier: ^6.3.4
