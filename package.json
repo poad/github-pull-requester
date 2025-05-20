@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@octokit/core": "^6.1.5",
-    "@octokit/graphql": "^8.2.2",
+    "@octokit/core": "^7.0.0",
+    "@octokit/graphql": "^9.0.0",
     "graphql": "^16.11.0"
   },
   "exports": {
