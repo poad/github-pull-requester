@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@octokit/core": "^7.0.0",
+    "@octokit/core": "^7.0.2",
     "@octokit/graphql": "^9.0.0",
     "graphql": "^16.11.0"
   },
