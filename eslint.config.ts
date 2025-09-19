@@ -1,17 +1,18 @@
 // @ts-check
 
+import { defineConfig } from 'eslint/config';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 import github from 'eslint-plugin-github';
 
-import tseslint from 'typescript-eslint';
+import tseslint, { configs } from 'typescript-eslint';
 
-export default tseslint.config(
+export default defineConfig(
   eslint.configs.recommended,
-  ...tseslint.configs.strict,
-  ...tseslint.configs.stylistic,
+  ...configs.strict,
+  ...configs.stylistic,
   {
     ignores: [
       '**/*.d.ts',
@@ -21,19 +22,17 @@ export default tseslint.config(
     ],
     files: ['{src,test}/**/*.ts'],
     extends: [
-      ...tseslint.configs.recommended,
+      ...configs.recommended,
     ],
     plugins: {
       '@stylistic': stylistic,
-      '@stylistic/ts': stylisticTs,
       github,
     },
     rules: {
-      '@stylistic/semi': 'error',
-      '@stylistic/ts/indent': ['error', 2],
-      'comma-dangle': ['error', 'always-multiline'],
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/quotes': ['error', 'single'],
     },
   },
 );
