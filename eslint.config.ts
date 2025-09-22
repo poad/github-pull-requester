@@ -3,23 +3,24 @@
 import { defineConfig } from 'eslint/config';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
-import stylisticTs from '@stylistic/eslint-plugin-ts';
 
+// @ts-expect-error no types
 import github from 'eslint-plugin-github';
 
-import tseslint, { configs } from 'typescript-eslint';
+import { configs } from 'typescript-eslint';
 
 export default defineConfig(
-  eslint.configs.recommended,
-  ...configs.strict,
-  ...configs.stylistic,
-  {
-    ignores: [
+  {    ignores: [
       '**/*.d.ts',
       '*.{js,jsx}',
       'node_modules/**/*',
       'dist',
     ],
+  },
+  eslint.configs.recommended,
+  ...configs.strict,
+  ...configs.stylistic,
+  {
     files: ['{src,test}/**/*.ts'],
     extends: [
       ...configs.recommended,
