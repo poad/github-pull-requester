@@ -107,3 +107,4 @@ typings/
 
 node_modules
 vite.config.js
+eslint.config.js
