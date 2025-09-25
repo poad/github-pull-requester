@@ -1,7 +1,7 @@
 name: CI (test)
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - 'main'
       - '!test-base-*'
@@ -21,90 +21,90 @@ jobs:
     if: github.actor != 'dependabot[bot]'
 
     steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: '0'
+    - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      with:
+        fetch-depth: '0'
 
-      - name: Use Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: '24.x'
-          check-latest: true
-          package-manager-cache: false
+    - name: Use Node.js
+      uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+      with:
+        node-version: '24.x'
+        check-latest: true
+        package-manager-cache: false
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          run_install: |
-            - recursive: true
-              args: [--no-frozen-lockfile]
+    - name: Install pnpm
+      uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+      id: pnpm-install
+      with:
+        run_install: |
+          - recursive: true
+            args: [--no-frozen-lockfile]
 
-      - name: Build
-        run: pnpm package
+    - name: Build
+      run: pnpm package
 
-      - name: Git config
-        run: |
-          git config --local user.email "ken-yo@mbr.nifty.com"
-          git config --local user.name "Kenji Saito"
+    - name: Git config
+      run: |
+        git config --local user.email "ken-yo@mbr.nifty.com"
+        git config --local user.name "Kenji Saito"
 
-      - name: Create base branch
-        id: create-base-branch
-        run: |
-          BASE_BRANCH_NAME="test-base-$(date "+%Y%m%d-%H%M%S")"
-          git switch -c "${BASE_BRANCH_NAME}"
-          touch test.txt
-          git add test.txt
-          git commit -m "Test $(date)"
-          echo "BASE_BRANCH_NAME=${BASE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
+    - name: Create base branch
+      id: create-base-branch
+      run: |
+        BASE_BRANCH_NAME="test-base-$(date "+%Y%m%d-%H%M%S")"
+        git switch -c "${BASE_BRANCH_NAME}"
+        touch test.txt
+        git add test.txt
+        git commit -m "Test $(date)"
+        echo "BASE_BRANCH_NAME=${BASE_BRANCH_NAME}" >> "$GITHUB_OUTPUT"
 
-      - name: Push Base
-        uses: ad-m/github-push-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
+    - name: Push Base
+      uses: ad-m/github-push-action@77c5b412c50b723d2a4fbc6d71fb5723bcd439aa  # v1.0.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
 
-      - name: Create head branch
-        id: create-head-branch
-        run: |
-          BRANCH_NAME="test-$(date "+%Y%m%d-%H%M%S")"
-          git switch -c "${BRANCH_NAME}"
-          touch test1.txt
-          git add test1.txt
-          git commit -m "Test $(date)"
-          echo "BRANCH_NAME=${BRANCH_NAME}" >> "$GITHUB_OUTPUT"
+    - name: Create head branch
+      id: create-head-branch
+      run: |
+        BRANCH_NAME="test-$(date "+%Y%m%d-%H%M%S")"
+        git switch -c "${BRANCH_NAME}"
+        touch test1.txt
+        git add test1.txt
+        git commit -m "Test $(date)"
+        echo "BRANCH_NAME=${BRANCH_NAME}" >> "$GITHUB_OUTPUT"
 
-      - name: Push Changes
-        uses: ad-m/github-push-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.create-head-branch.outputs.BRANCH_NAME }}
+    - name: Push Changes
+      uses: ad-m/github-push-action@77c5b412c50b723d2a4fbc6d71fb5723bcd439aa  # v1.0.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ steps.create-head-branch.outputs.BRANCH_NAME }}
 
-      - name: Create pull request
-        uses: ./
-        id: create-pull-request
-        with:
-          head_branch: ${{ steps.create-head-branch.outputs.BRANCH_NAME }}
-          base_branch: ${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: github-pull-requester
-          owner: poad
+    - name: Create pull request
+      uses: ./
+      id: create-pull-request
+      with:
+        head_branch: ${{ steps.create-head-branch.outputs.BRANCH_NAME }}
+        base_branch: ${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: github-pull-requester
+        owner: poad
 
-      - name: Close pull request for test
-        env:
-          RESULT: ${{ steps.create-pull-request.outputs.result }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          URL=$(echo ${RESULT} | jq -r .data.url)
-          echo ${URL}
+    - name: Close pull request for test
+      env:
+        RESULT: ${{ steps.create-pull-request.outputs.result }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        URL=$(echo ${RESULT} | jq -r .data.url)
+        echo ${URL}
 
-          REQUEST_BODY='{ "state": "closed" }'
+        REQUEST_BODY='{ "state": "closed" }'
 
-          curl -sSL -X PATCH \
-            --url ${URL} \
-            --header 'content-type: application/vnd.github.sailor-v-preview+json' \
-            --header "authorization: bearer ${GH_TOKEN}" \
-            --data "${REQUEST_BODY}";
+        curl -sSL -X PATCH \
+          --url ${URL} \
+          --header 'content-type: application/vnd.github.sailor-v-preview+json' \
+          --header "authorization: bearer ${GH_TOKEN}" \
+          --data "${REQUEST_BODY}";
 
-          git push origin :${{ steps.create-head-branch.outputs.BRANCH_NAME }}
-          git push origin :${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
+        git push origin :${{ steps.create-head-branch.outputs.BRANCH_NAME }}
+        git push origin :${{ steps.create-base-branch.outputs.BASE_BRANCH_NAME }}
