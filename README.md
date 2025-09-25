@@ -43,3 +43,7 @@ Create a new Pull Request by GitHub GraphQL API.
 |-----|-------|
 | id | GraphQL Node ID of GitHub Pull Request. |
 | url | URL of GitHub Pull Request. |
+
+## Security Policy
+
+See [SECURITY.md](./SECURITY.md).
