@@ -1,7 +1,7 @@
 {
   "name": "github-pull-request-generate-action",
   "private": true,
-  "version": "3.0.0",
+  "version": "3.0.1",
   "repository": "https://github.com/poad/github-pull-request-generate-action.git",
   "author": "Kenji Saito <ken-yo@mbr.nifty.com>",
   "license": "MIT",
