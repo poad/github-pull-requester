@@ -18,9 +18,9 @@
   "devDependencies": {
     "@eslint/js": "^9.38.0",
     "@stylistic/eslint-plugin": "^5.5.0",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.9.2",
     "@vercel/ncc": "^0.38.4",
-    "@vitest/coverage-v8": "^4.0.4",
+    "@vitest/coverage-v8": "^4.0.5",
     "eslint": "^9.38.0",
     "eslint-plugin-github": "^6.0.0",
     "jiti": "^2.6.1",
@@ -30,12 +30,12 @@
     "typescript-eslint": "^8.46.2",
     "vite": "^7.1.12",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.0.4"
+    "vitest": "^4.0.5"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@octokit/core": "^7.0.5",
-    "@octokit/graphql": "^9.0.2",
+    "@octokit/core": "^7.0.6",
+    "@octokit/graphql": "^9.0.3",
     "graphql": "^16.11.0"
   },
   "exports": {
@@ -49,5 +49,5 @@
     "node": ">=24",
     "pnpm": ">=10.17.0"
   },
-  "packageManager": "pnpm@10.18.3"
+  "packageManager": "pnpm@10.20.0"
 }
