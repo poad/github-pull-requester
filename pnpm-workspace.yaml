@@ -11,5 +11,5 @@ minimumReleaseAgeExclude:
  - pnpm
 
 overrides:
-  '@eslint/js@=9.39.0': "^9.39.1"
-  'eslint@=9.39.0': "^9.39.1"
+  '@eslint/js': "^9"
+  'eslint': "^9"
