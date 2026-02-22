@@ -1,15 +1,16 @@
+autoInstallPeers: true
+
+legacyPeerDeps: true
+
+minimumReleaseAge: 1440
+
+minimumReleaseAgeExclude:
+  - pnpm
+
 onlyBuiltDependencies:
   - esbuild
 
-autoInstallPeers: true
-legacyPeerDeps: true
-strictPeerDependencies: false
-
-# one day
-minimumReleaseAge: 1440
-minimumReleaseAgeExclude:
- - pnpm
-
 overrides:
-  '@eslint/js': "^9"
-  'eslint': "^9"
+  minimatch@<10.2.1: '>=10.2.1'
+
+strictPeerDependencies: false
