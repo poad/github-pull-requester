@@ -18,7 +18,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.9.0",
-    "@types/node": "^25.3.0",
+    "@types/node": "^25.3.1",
     "@vercel/ncc": "^0.38.4",
     "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^10.0.2",
@@ -49,5 +49,5 @@
     "node": ">=24",
     "pnpm": ">=10.17.0"
   },
-  "packageManager": "pnpm@10.30.2"
+  "packageManager": "pnpm@10.30.3"
 }
