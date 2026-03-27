@@ -9,5 +9,7 @@ minimumReleaseAgeExclude:
 
 onlyBuiltDependencies:
   - esbuild
+overrides:
+  brace-expansion@<1.1.13: '>=1.1.13'
 
 strictPeerDependencies: false
