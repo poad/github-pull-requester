@@ -18,17 +18,17 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@types/node": "^26.0.0",
-    "@vercel/ncc": "^0.44.0",
+    "@types/node": "^26.0.1",
+    "@vercel/ncc": "^0.44.1",
     "@vitest/coverage-v8": "^4.1.9",
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "eslint-plugin-github": "^6.0.0",
     "jiti": "^2.7.0",
     "nock": "^15.0.0",
     "pnpm": "^11.9.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.62.0",
-    "vite": "^8.1.0",
+    "typescript-eslint": "^8.62.1",
+    "vite": "^8.1.1",
     "vitest": "^4.1.9"
   },
   "dependencies": {
@@ -48,5 +48,5 @@
     "node": ">=24",
     "pnpm": ">=10.17.0"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.9.0"
 }
