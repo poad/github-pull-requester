@@ -24,8 +24,7 @@
     "eslint": "^10.6.0",
     "eslint-plugin-github": "^6.1.0",
     "jiti": "^2.7.0",
-    "nock": "^15.0.0",
-    "pnpm": "^11.10.0",
+    "nock": "^14.0.16",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.63.0",
     "vite": "^8.1.3",
@@ -43,10 +42,21 @@
       "default": "./dist/main.js"
     }
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.16.0",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^24.18.0",
+      "onFail": "download"
+    }
+  },
   "engines": {
     "npm": "use pnpm please!",
     "node": ">=24",
-    "pnpm": ">=10.17.0"
-  },
-  "packageManager": "pnpm@11.9.0"
+    "pnpm": ">=11"
+  }
 }

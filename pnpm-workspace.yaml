@@ -1,5 +1,8 @@
+packages:
+  - .
+
 allowBuilds:
-  esbuild: set this to true or false
+  esbuild: false
 autoInstallPeers: true
 
 legacyPeerDeps: true
@@ -9,8 +12,6 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - pnpm
 
-onlyBuiltDependencies:
-  - esbuild
 overrides:
   brace-expansion@<1.1.13: '>=1.1.13'
 
