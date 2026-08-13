@@ -10,7 +10,7 @@ legacyPeerDeps: true
 minimumReleaseAge: 1440
 
 minimumReleaseAgeExclude:
-  - pnpm
+  - pnpm@11.21.0
 
 overrides:
   brace-expansion@<1.1.13: '>=1.1.13'
