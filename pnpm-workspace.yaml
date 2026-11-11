@@ -5,14 +5,15 @@ allowBuilds:
   esbuild: false
 autoInstallPeers: true
 
-legacyPeerDeps: true
+dedupePeerDependents: true
 
 minimumReleaseAge: 1440
 
 minimumReleaseAgeExclude:
-  - pnpm@11.24.0
+  - pnpm@12.19.0
 
 overrides:
   brace-expansion@<1.1.13: '>=1.1.13'
+  minimatch@>=7.0.0 <11.0.1: ^11.0.1
 
 strictPeerDependencies: false

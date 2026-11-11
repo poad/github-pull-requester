@@ -8,7 +8,7 @@
   "main": "./dist/main.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "node_modules/@typescript/native/bin/tsc",
     "lint-fix": "eslint src/**/*.ts --fix",
     "lint": "eslint src/**/*.ts",
     "test": "vitest run --silent=false --coverage",
@@ -18,23 +18,24 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@types/node": "^26.2.0",
-    "@vercel/ncc": "^0.44.1",
-    "@vitest/coverage-v8": "^4.1.11",
-    "eslint": "^10.9.0",
+    "@types/node": "^26.6.6",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "@vercel/ncc": "^0.45.0",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.14.0",
     "eslint-plugin-github": "^6.1.2",
     "jiti": "^2.7.0",
-    "nock": "^14.0.17",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0",
+    "nock": "^15.0.6",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.72.2",
     "vite": "^8.3.7",
-    "vitest": "^4.1.11"
+    "vitest": "^5.1.0"
   },
   "dependencies": {
     "@actions/core": "^3.0.1",
-    "@octokit/core": "^7.0.7",
-    "@octokit/graphql": "^9.0.4",
-    "graphql": "^17.0.2"
+    "@octokit/core": "^7.0.8",
+    "@octokit/graphql": "^9.0.5",
+    "graphql": "^17.1.0"
   },
   "exports": {
     ".": {
@@ -45,12 +46,12 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "~11.24.0",
+      "version": "12.19.0",
       "onFail": "download"
     },
     "runtime": {
       "name": "node",
-      "version": "^24.19.0",
+      "version": "^26.13.1",
       "onFail": "download"
     }
   },
