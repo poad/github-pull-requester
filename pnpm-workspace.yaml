@@ -10,7 +10,7 @@ dedupePeerDependents: true
 minimumReleaseAge: 1440
 
 minimumReleaseAgeExclude:
-  - pnpm@12.19.0
+  - pnpm@12.20.0
 
 overrides:
   brace-expansion@<1.1.13: '>=1.1.13'
